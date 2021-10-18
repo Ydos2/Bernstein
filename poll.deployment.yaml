@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: poll-deployment
+  labels:
+    app: poll
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: poll
+  template:
+    metadata:
+      labels:
+        app: poll
+    spec:
+      containers:
+      - name: poll
+        image: poll.dop.io:30021
+        ports:
+        - containerPort: 80

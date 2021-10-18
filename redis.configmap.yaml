@@ -1,0 +1,10 @@
+piVersion: v1
+kind: ConfigMap
+metadata:
+  name: redis-config
+  labels:
+    app: redis
+data:
+  REDIS_DB: redisdb
+  REDIS_USER: redisadmin
+  REDIS_PASSWORD: admin123
