@@ -17,13 +17,13 @@ spec:
     spec:
       restartPolicy: Always
       containers:
-      - name: poll
-        image: epitechcontent/t-dop-600-poll:k8s
-        ports:
-        - containerPort: 80
-        resources:
-          limits:
-            memory: "128M"
-        envFrom:
-          - configMapRef:
-              name: redis-config
+        - name: poll
+          image: epitechcontent/t-dop-600-poll:k8s
+          ports:
+            - containerPort: 80
+          resources:
+            limits:
+              memory: "128M"
+          envFrom:
+            - configMapRef:
+                name: redis-config
