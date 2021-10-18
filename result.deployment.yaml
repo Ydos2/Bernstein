@@ -2,10 +2,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: result-deployment
+  namespace: default
   labels:
     app: result
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
       app: result
@@ -14,8 +15,15 @@ spec:
       labels:
         app: result
     spec:
+      restartPolicy: Always
       containers:
       - name: result
-        image: result.dop.io:30021
+        image: epitechcontent/t-dop-600-result:k8s
         ports:
         - containerPort: 80
+        resources:
+          limits:
+            memory: "128M"
+        envFrom:
+          - configMapRef:
+              name: redis-config

@@ -2,10 +2,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: redis-deployment
+  namespace: default
   labels:
     app: redis
 spec:
-  replicas: 3
   selector:
     matchLabels:
       app: redis
@@ -14,8 +14,12 @@ spec:
       labels:
         app: redis
     spec:
+      restartPolicy: Always
       containers:
       - name: redis
         image: redis.dop.io:30021
         ports:
-        - containerPort: 80
+        - containerPort: 6379
+        envFrom:
+          - configMapRef:
+              name: redis-config
