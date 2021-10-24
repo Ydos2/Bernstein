@@ -14,10 +14,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Install k3s
-      curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE=777 sh -
-      cat /etc/rancher/k3s/k3s.yaml
-      mkdir -p ~/.kube
-      cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
+      run: |
+        curl -sfL https://get.k3s.io | K3S_KUBECONFIG_MODE=777 sh -
+        cat /etc/rancher/k3s/k3s.yaml
+        mkdir -p ~/.kube
+        cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
     - name: Get cluster info
       run: |
         kubectl cluster-info
