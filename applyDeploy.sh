@@ -25,6 +25,6 @@ kubectl apply -f traefik.rbac.yaml \
     -f traefik.service.yaml
 
 echo ""
-echo "\033[0;32mDeployment complete"
-echo "Don't forget to create the tables in postgres"
-echo "And to setup /etc/hosts correctly\033[0m"
+echo "\033[0;32mDeployment complete\033[0m"
+echo "\033[0;32mDon't forget to create the tables in postgres\033[0m"
+echo "\033[0;32mAnd to setup /etc/hosts correctly\033[0m"
