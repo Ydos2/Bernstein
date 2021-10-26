@@ -22,27 +22,27 @@ spec:
             - name: POSTGRES_HOST
               valueFrom:
                 configMapKeyRef:
-                  name: database-config
+                  name: postgres-config
                   key: hostname
             - name: POSTGRES_PORT
               valueFrom:
                 configMapKeyRef:
-                  name: database-config
+                  name: postgres-config
                   key: port
             - name: POSTGRES_DB
               valueFrom:
                 configMapKeyRef:
-                  name: database-config
+                  name: postgres-config
                   key: dbname
             - name: POSTGRES_USER
               valueFrom:
                 secretKeyRef:
-                  name: database-secret-config
+                  name: postgres-secret
                   key: username
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: database-secret-config
+                  name: postgres-secret
                   key: password
           resources:
             limits:

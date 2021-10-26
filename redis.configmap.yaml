@@ -5,6 +5,4 @@ metadata:
   labels:
     app: redis
 data:
-  REDIS_DB: redisdb
-  REDIS_USER: redisadmin
-  REDIS_PASSWORD: admin123
+  hostname: redis
