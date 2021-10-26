@@ -10,6 +10,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: test
+                name: http
                 port:
                   number: 80

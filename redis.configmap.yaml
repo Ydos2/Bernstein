@@ -5,4 +5,4 @@ metadata:
   labels:
     app: redis
 data:
-  hostname: redis
+  hostname: redis-service

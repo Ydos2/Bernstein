@@ -4,8 +4,8 @@ metadata:
   name: poll-service
 spec:
   selector:
-    app: MyApp
+    app: poll
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 9376
+      targetPort: 80
