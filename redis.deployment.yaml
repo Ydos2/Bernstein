@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: redis-deployment
-  namespace: default
   labels:
     app: redis
 spec:
@@ -17,9 +16,13 @@ spec:
       restartPolicy: Always
       containers:
         - name: redis
-          image: redis.dop.io:30021
+          image: redis:5.0
           ports:
             - containerPort: 6379
           envFrom:
             - configMapRef:
                 name: redis-config
+          resources:
+            limits:
+              memory: "500M"
+              cpu: "250m"

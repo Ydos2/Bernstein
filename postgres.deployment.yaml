@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: postgres-deployment
-  namespace: default
   labels:
     app: postgres
 spec:
@@ -19,4 +18,8 @@ spec:
           image: postgres:12
           ports:
             - containerPort: 5432
+          resources:
+            limits:
+              memory: "500M"
+              cpu: "250m"
       restartPolicy: Always

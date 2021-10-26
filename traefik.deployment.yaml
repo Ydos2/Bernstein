@@ -21,3 +21,7 @@ spec:
           image: traefik:1.7
           ports:
             - containerPort: 80
+          resources:
+            limits:
+              memory: "500M"
+              cpu: "250m"
