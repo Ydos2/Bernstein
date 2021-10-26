@@ -1,19 +1,20 @@
 apiVersion: v1
-kind: Pod
+kind: PersistentVolume
 metadata:
-  name: postgres-cinder
+  name: postgres-volume
 spec:
-  volumes:
-    - name: postgres-pv-claim
-      persistentVolumeClaim:
-        claimName: postgres-pv-claim
-  containers:
-    - image: k8s.gcr.io/postgres-webserver
-      name: postgres-cinder-container
-      volumeMounts:
-        - mountPath: /var/lib/postgresql/data
-          name: postgres-pv-claim
-      resources:
-        limits:
-          memory: "500M"
-          cpu: "250m"
+  capacity:
+    storage: 1Gi
+  accessModes: [ReadWriteOnce]
+  hostPath:
+    path: /var/lib/postgresql/data
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postgres-volume-claim
+spec:
+  resources:
+    requests:
+      storage: 1Gi
+  accessModes: [ReadWriteOnce]
