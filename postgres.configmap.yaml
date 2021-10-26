@@ -5,7 +5,7 @@ metadata:
   labels:
     app: postgres
 data:
-  POSTGRES_HOST: postgres-host
+  POSTGRES_HOST: postgres
   POSTGRES_PORT: "5432"
   POSTGRES_DB: postgresdb
   POSTGRES_USER: postgresadmin

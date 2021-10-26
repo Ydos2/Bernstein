@@ -18,6 +18,17 @@ spec:
           image: postgres:12
           ports:
             - containerPort: 5432
+          env:
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: database-secret-config
+                  key: password
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: database-secret-config
+                  key: username
           resources:
             limits:
               memory: "500M"
