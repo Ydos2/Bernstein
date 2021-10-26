@@ -17,7 +17,7 @@ spec:
     spec:
       restartPolicy: Always
       containers:
-      - name: traefik
-        image: traefik:1.7
-        ports:
-        - containerPort: 80
+        - name: traefik
+          image: traefik:1.7
+          ports:
+            - containerPort: 80

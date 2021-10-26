@@ -3,13 +3,17 @@ kind: Pod
 metadata:
   name: postgres-cinder
 spec:
-  containers:
-  - image: k8s.gcr.io/postgres-webserver
-    name: postgres-cinder-container
-    volumeMounts:
-      - mountPath: /var/lib/postgresql/data
-        name: postgres-pv-claim
-    volumes:
+  volumes:
     - name: postgres-pv-claim
       persistentVolumeClaim:
         claimName: postgres-pv-claim
+  containers:
+    - image: k8s.gcr.io/postgres-webserver
+      name: postgres-cinder-container
+      volumeMounts:
+        - mountPath: /var/lib/postgresql/data
+          name: postgres-pv-claim
+      resources:
+        limits:
+          memory: "500M"
+          cpu: "250m"

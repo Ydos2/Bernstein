@@ -16,10 +16,10 @@ spec:
     spec:
       restartPolicy: Always
       containers:
-      - name: redis
-        image: redis.dop.io:30021
-        ports:
-        - containerPort: 6379
-        envFrom:
-          - configMapRef:
-              name: redis-config
+        - name: redis
+          image: redis.dop.io:30021
+          ports:
+            - containerPort: 6379
+          envFrom:
+            - configMapRef:
+                name: redis-config
