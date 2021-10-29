@@ -2,6 +2,9 @@ apiVersion: v1
 kind: Service
 metadata:
   name: poll-service
+  namespace: default
+  labels:
+    app: poll
 spec:
   selector:
     app: poll
