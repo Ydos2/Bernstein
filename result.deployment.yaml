@@ -34,5 +34,8 @@ spec:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
             - labelSelector:
-                matchExpressions: [{ key: app, operator: In, values: [result] }]
+                matchExpressions:
+                  - key: app
+                    operator: In
+                    values: [result]
               topologyKey: "kubernetes.io/hostname"
