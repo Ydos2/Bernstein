@@ -5,6 +5,6 @@ metadata:
   labels:
     app: postgres
 data:
-  hostname: postgres-service
-  port: "5432"
-  dbname: postgresdb
+  POSTGRES_HOST: postgres-service
+  POSTGRES_PORT: "5432"
+  POSTGRES_DB: postgresdb

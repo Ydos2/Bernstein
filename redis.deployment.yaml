@@ -2,9 +2,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: redis-deployment
+  namespace: default
   labels:
     app: redis
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: redis
@@ -19,9 +21,6 @@ spec:
           image: redis:5.0
           ports:
             - containerPort: 6379
-          envFrom:
-            - configMapRef:
-                name: redis-config
           resources:
             limits:
               memory: "500M"
