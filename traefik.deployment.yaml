@@ -30,3 +30,9 @@ spec:
             limits:
               memory: "500M"
               cpu: "250m"
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions: [{ key: app, operator: In, values: [result] }]
+              topologyKey: "kubernetes.io/hostname"
