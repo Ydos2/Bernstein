@@ -2,10 +2,24 @@ apiVersion: v1
 kind: Service
 metadata:
   name: traefik-service
+  namespace: kube-public
+  labels:
+    app: traefik
 spec:
   selector:
-    app: MyApp
+    app: traefik
+
+  # Use NodePort to expose the service
+  type: NodePort
   ports:
-    - protocol: TCP
+    # Http proxy: 80 -> 30021
+    - name: http
       port: 80
-      targetPort: 9376
+      targetPort: 80
+      nodePort: 30021
+
+    # Admin dashboard: 8080 -> 30021
+    - name: admin
+      port: 8080
+      targetPort: 8080
+      nodePort: 30042

@@ -1,15 +1,19 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: test-ingress
+  name: result-ingress
+  namespace: default
+  labels:
+    app: result
 spec:
   rules:
-    - http:
+    - host: result.dop.io
+      http:
         paths:
-          - path: /testpath
+          - path: /
             pathType: Prefix
             backend:
               service:
-                name: test
+                name: result-service
                 port:
                   number: 80

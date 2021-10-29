@@ -19,12 +19,18 @@ spec:
       containers:
         - name: poll
           image: epitechcontent/t-dop-600-poll:k8s
+
+          # Expose port 80
           ports:
             - containerPort: 80
+
+          # Set REDIS_HOST from the config map
+          envFrom:
+            - configMapRef:
+                name: redis-config
+
+          # Mandatory resource limits
           resources:
             limits:
               memory: "128M"
               cpu: "250m"
-          envFrom:
-            - configMapRef:
-                name: redis-config

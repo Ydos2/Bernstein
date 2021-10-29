@@ -1,23 +1,33 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: traefik-ingress-controller
+  name: gateway-role
+  namespace: kube-public
+  labels:
+    app: traefik
 rules:
-  - apiGroups:
-      - ""
-    resources:
-      - services
-      - endpoints
-      - secrets
-    verbs:
-      - get
-      - list
-      - watch
-  - apiGroups:
-      - extensions
-    resources:
-      - ingresses
-    verbs:
-      - get
-      - list
-      - watch
+  - apiGroups: [""]
+    resources: ["services", "endpoints", "secrets"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["extensions"]
+    resources: ["ingresses"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: ["extensions"]
+    resources: ["ingresses/status"]
+    verbs: ["update"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: gateway-controller
+  namespace: kube-public
+  labels:
+    app: traefik
+roleRef:
+  kind: ClusterRole
+  name: gateway-role
+  apiGroup: rbac.authorization.k8s.io
+subjects:
+  - kind: ServiceAccount
+    name: traefik-controller
+    namespace: kube-public

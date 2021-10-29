@@ -20,7 +20,12 @@ spec:
         - name: traefik
           image: traefik:1.7
           ports:
-            - containerPort: 80
+            # Port 80 is the HTTP proxy
+            - name: http
+              containerPort: 80
+            # Port 8080 is the admin dashboard
+            - name: admin
+              containerPort: 8080
           resources:
             limits:
               memory: "500M"

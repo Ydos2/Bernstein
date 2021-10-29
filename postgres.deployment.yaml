@@ -19,20 +19,30 @@ spec:
       containers:
         - name: postgres
           image: postgres:12
+
+          # Expose port 5432 (default for postgres)
           ports:
             - containerPort: 5432
+
+          # Mount the database volume
           volumeMounts:
             - mountPath: /var/lib/postgresql/data
               name: postgres-volume
+
+          # Set environment variables from config map and secret
           envFrom:
             - configMapRef:
                 name: postgres-config
             - secretRef:
                 name: postgres-secret
+
+          # Mandatory resource limits
           resources:
             limits:
               memory: "500M"
               cpu: "250m"
+
+      # Volume to mount the database
       volumes:
         - name: postgres-volume
           persistentVolumeClaim:
