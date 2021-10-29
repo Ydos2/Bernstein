@@ -30,3 +30,9 @@ spec:
                 name: postgres-config
             - secretRef:
                 name: postgres-secret
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions: [{ key: app, operator: In, values: [result] }]
+              topologyKey: "kubernetes.io/hostname"
