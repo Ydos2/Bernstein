@@ -18,8 +18,6 @@ spec:
       containers:
         - name: worker
           image: epitechcontent/t-dop-600-worker:k8s
-          ports:
-            - containerPort: 80
           resources:
             limits:
               memory: "256M"
