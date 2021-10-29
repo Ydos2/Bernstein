@@ -27,4 +27,6 @@ spec:
               cpu: "250m"
           envFrom:
             - configMapRef:
-                name: redis-config
+                name: postgres-config
+            - secretRef:
+                name: postgres-secret
