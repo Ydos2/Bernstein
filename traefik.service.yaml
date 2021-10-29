@@ -23,9 +23,3 @@ spec:
       port: 8080
       targetPort: 8080
       nodePort: 30042
-  affinity:
-    podAntiAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        - labelSelector:
-            matchExpressions: [{ key: app, operator: In, values: [traefik] }]
-          topologyKey: "kubernetes.io/hostname"
